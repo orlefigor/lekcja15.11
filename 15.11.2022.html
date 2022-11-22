@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>igor orlef 4i</title>
+  </head>
+  <body>
+    <main>
+      <label for="ilosc"
+        >podaj ilosc liczb między 10 a 20: <input type="number" id="ilosc"
+      /></label>
+      <button id="ile">ile</button>
+      <label for="licz"
+        >podaj liczbę do tabeli: <input type="number" id="licz"
+      /></label>
+
+      <button id="dod_elem">dodaj elem do tab</button>
+    </main>
+    <section>
+      <p id="display"></p>
+    </section>
+    <script>
+      const ilosc = document.getElementById("ilosc");
+
+      const ile = document.querySelector("#ile");
+      const dod_elem = document.querySelector("#dod_elem");
+      const display = document.querySelector("#display");
+      const tab = new Array(ilosc);
+      let i = 0;
+      function fn1() {
+        if (ilosc.value <= 20 && ilosc.value >= 10) {
+          ile.disabled = true;
+        } else {
+          display.innerHTML = "zla liczba";
+        }
+      }
+      function fn2() {
+        if (i >= ilosc.value - 1) {
+          dod_elem.disabled = true;
+        }
+        if (i <= ilosc.value) {
+          const licz = document.getElementById("licz");
+          if (licz.value % 2 != 0) {
+            tab.unshift(licz.value);
+            console.log(tab);
+          }
+          if (licz.value % 2 == 0) {
+            tab.push(licz.value);
+            console.log(tab);
+          }
+        }
+        i++;
+      }
+
+      ile.addEventListener("click", fn1);
+      dod_elem.addEventListener("click", fn2);
+    </script>
+  </body>
+</html>
